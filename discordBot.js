@@ -2,6 +2,7 @@ require('dotenv').config();
 const { Client, IntentsBitField, AttachmentBuilder }  = require('discord.js');
 const nodeHtmlToImage = require('node-html-to-image');
 const font2base64 = require('node-font2base64');
+const puppeteerCore = require('puppeteer-core');
 
 
 const myIntents = new IntentsBitField();
@@ -52,7 +53,11 @@ client.on('interactionCreate', (interaction) => {
         <html>
         `
         nodeHtmlToImage({ 
-            html: html
+            html: html,
+            puppeteer: puppeteerCore,
+            puppeteerArgs: {
+                executablePath: '/usr/bin/chromium-browser',
+            }
         }).then((image) => {
             console.log('Image created successfully!')
             const attachment = new AttachmentBuilder(image, { name: 'aurebesh2.png',
