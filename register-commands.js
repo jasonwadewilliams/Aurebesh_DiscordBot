@@ -8,7 +8,7 @@ const commands = [
         options: [
             {
                 name: 'input',
-                description: 'Test to be translated.',
+                description: 'Text to be translated.',
                 type: ApplicationCommandOptionType.String,
                 required: true,
             },
